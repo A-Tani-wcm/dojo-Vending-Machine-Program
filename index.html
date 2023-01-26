@@ -8,6 +8,48 @@
     <title>vending Machine Program</title>
 </head>
 <body>
+
+<div>
+    <h3>お金を入れて（入力して）ください</h3>
+    <input type="number" id="charge" value="0">
+    <button onclick="clicked_charge()">Charge</button>
+</div>
+
+    <h1>List of Drinks (¥)</h1>
+
+<ul>
+    <li>Green Tea
+        <p id="greentea-price"></p>
+        <button id="btn-greentea" onclick="clicked('greentea')">buy</button>
+    </li>
+    <li>Cola
+        <p id="cola-price"></p>
+        <button id="btn-cola" onclick="clicked('cola')">buy</button>
+    </li>
+    <li>Orange Juice
+        <p id="orange-price"></p>
+        <button id="btn-orange" onclick="clicked('orange')">buy</button>
+    </li>
+    <li>CC lemon
+        <p id="cclemon-price"></p>
+        <button id="btn-cclemon" onclick="clicked('cclemon')">buy</button>
+    </li>
+    <li>Beer
+        <p id="beer-price"></p>
+        <button id="btn-beer" onclick="clicked('beer')">buy</button>
+    </li>
+</ul>
+
+<div>
+    <button onclick="hoju()" id="hoju">補充</button>
+</div>
+
+
+<div>
+    <button onclick="otsuri()" id="otsuri">お釣り</button>
+</div>
+
+
     <script src="vending-machine.js"></script>
 
 </body>
