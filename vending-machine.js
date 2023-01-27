@@ -21,11 +21,10 @@ function preview(total_u_money, u_money) {
 function select_drink(u_select){
     switch(u_select){
         case(drink.greentea):
-        if(money_check(total_u_money) == "NG"){break;}else{
-            if(stock_check(drink.greentea[0]) == "NG"){break;}else{
+        if(money_check(total_u_money) == "NG"){break;}else{ /* 投入金額が足りているかチェック */
+            if(stock_check(drink.greentea[0]) == "NG"){break;}else{ /* 在庫が足りているかチェック */
             drink.greentea[0] -= 1;
             total_u_money -= drink.greentea[1];
-            //console.log(`Stocks of ${Object.keys(drink)[0]}: ${drink.greentea[0]}`);
             }
         }
             break;
@@ -35,7 +34,6 @@ function select_drink(u_select){
             if(stock_check(drink.cola[0]) == "NG"){break;}else{
             drink.cola[0] -= 1;
             total_u_money -= drink.cola[1];
-            //console.log(`Stocks of ${Object.keys(drink)[1]}: ${drink.cola[0]}`);
             }
         }
             break;
@@ -45,7 +43,6 @@ function select_drink(u_select){
             if(stock_check(drink.orange[0]) == "NG"){break;}else{
             drink.orange[0] -= 1;
             total_u_money -= drink.orange[1];
-            //console.log(`Stocks of ${Object.keys(drink)[2]}: ${drink.orange[0]}`);
         }
         }
             break;
@@ -55,7 +52,6 @@ function select_drink(u_select){
             if(stock_check(drink.cclemon[0]) == "NG"){break;}else{
             drink.cclemon[0] -= 1;
             total_u_money -= drink.cclemon[1];
-            //console.log(`Stocks of ${Object.keys(drink)[3]}: ${drink.cclemon[0]}`);
             }
         }
             break;
@@ -65,7 +61,6 @@ function select_drink(u_select){
             if(stock_check(drink.beer[0]) == "NG"){break;}else{
             drink.beer[0] -= 1;
             total_u_money -= drink.beer[1];
-            //console.log(`Stocks of ${Object.keys(drink)[4]}: ${drink.beer[0]}`);
             }
         }
             break;
@@ -82,10 +77,10 @@ function select_drink(u_select){
 function stock_check(num){
     console.log("\n★在庫有無確認★");
     if(num <= 0){
-        console.log("sold out...残念！次がんばろう！！\n");
+        console.log("sold out...残念！次がんばろう！！\n\n");
             return "NG";
     } else {
-        console.log("I got it! You are lucky!!\n");
+        console.log("I can buy! You are lucky!!\n\n");
     }
 }
 
@@ -96,18 +91,18 @@ function money_check(t_mon){
         console.log("残金が不足しています。稼ぎましょう。Let's earn!\n\n")
         return "NG";
     }else{
-        console.log("You are rich!!\n");
+        console.log("You are rich!!\n\n");
     }
     
 }
 
 //ドリンク一覧の表示
 function list_drink(){
-console.log("---LIST of DRINKs---");
+console.log("-----LIST of DRINKs-----");
 for(const key in drink){
     console.log(`${key}: ${drink[key][1]}yen 残り${drink[key][0]}本`);
 }
-console.log("----------------------");
+console.log("------------------------\n\n");
 }
 
 
@@ -124,7 +119,7 @@ let chrg = document.getElementById("charge");
 u_money = Number(chrg.value); 
 total_u_money += u_money;
 console.log(`投入金額: ${u_money}`);
-console.log(`合計投入金額: ${total_u_money}\n`);
+console.log(`合計投入金額: ${total_u_money}\n\n`);
 //money_check(total_u_money);
 chrg.value=0;
 }
@@ -150,7 +145,7 @@ function hoju(){
     for(let i = 0; i < Object.values(drink).length; i++){
         current_condition[i] = [Object.keys(drink)[i], Object.values(drink)[i][0]];
         drink[Object.keys(drink)[i]][0] = 10;
-        if(current_condition[i][1] != 10){
+        if(current_condition[i][1] != 10){ /* 補充前後で本数に差があれば補充したと判定 */
             console.log(`${current_condition[i][0]}を${10 - current_condition[i][1]}本補充しました。`)
         }
     }
@@ -180,4 +175,5 @@ for(const element of otsuri_array){
     total_u_money = total_u_money % element[0];
     console.log(`${element[0]}円： ${element[1]}枚`);
 }
+console.log("\n---------------");
 }
