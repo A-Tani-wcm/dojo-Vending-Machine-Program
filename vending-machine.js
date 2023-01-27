@@ -80,7 +80,7 @@ function stock_check(num){
         console.log("sold out...残念！次がんばろう！！\n\n");
             return "NG";
     } else {
-        console.log("I can buy! You are lucky!!\n\n");
+        console.log("You can buy! You are lucky!!\n\n");
     }
 }
 
